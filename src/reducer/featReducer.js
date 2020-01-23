@@ -1,3 +1,5 @@
+import { BUY_ITEM, REMOVE } from '../actions/index'
+
 
 const intialState = {
     additionalPrice: 0,
@@ -18,6 +20,40 @@ const intialState = {
 
 export const featReducer = (state = intialState, action) => {
     switch (action.type){
+        case BUY_ITEM: 
+
+        return {
+            ...state, 
+            additionalPrice: state.additionalPrice + action.payload.price,
+            car:{
+                price: 26395,
+                name: '2019 Ford Mustang',
+                image:
+                'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
+                features:[...state.car.features, action.payload]
+            },
+
+            additionalFeatures: state.additionalFeatures.filter(item => {
+                if(item.id === action.payload.id){
+                    return  !item
+                } else{
+                    return {...item}
+                }
+            })
+
+        }
+
+        case REMOVE:
+            return{
+                ...state,
+                car:{
+                    price: 26395,
+                    name: '2019 Ford Mustang',
+                    image:
+                    'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
+                    features:[...state.car.features, action.payload]
+                }
+            }
         
         
         default: 
