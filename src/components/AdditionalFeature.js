@@ -3,7 +3,7 @@ import { buyItem } from '../actions/index'
 
 
 const AdditionalFeature = props => {
-  console.log('each feature', props)
+  
   
   return (
     <li>
